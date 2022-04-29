@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # Django
-/newshop/settings.py
+/new_shop/settings.py

@@ -1,0 +1,7 @@
+Django~=4.0.4
+weasyprint~=54.3
+djangorestframework~=3.13.1
+yookassa~=2.3.0
+celery~=5.2.6
+# for dev
+django-debug-toolbar~=3.2.4

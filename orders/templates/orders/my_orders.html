@@ -1,0 +1,8 @@
+{% extends "shop/base.html" %}
+
+{% block title %}Ваши заказы{% endblock %}
+
+{% block content %}
+    {% for order in orders %}
+        <small class="text-title color2">{{ order.id }} {{ order.get_total_cost }}</small>
+{% endblock %}
