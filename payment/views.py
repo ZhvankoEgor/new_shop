@@ -6,11 +6,7 @@ from rest_framework.views import APIView
 
 from new_shop.settings import ALLOWED_HOSTS, YOOKASSA_ACCOUNT_ID, YOOKASSA_SECRET_CODE
 from orders.models import Order
-
-
-
 import uuid
-
 from yookassa import Configuration, Payment
 
 Configuration.account_id = YOOKASSA_ACCOUNT_ID
@@ -39,7 +35,6 @@ def payment_process(request):
     }, uuid.uuid4())
     order.payment_id = payment.id
     order.save()
-    print(payment.id)
     return redirect(payment.confirmation.confirmation_url)
 
 
@@ -55,7 +50,6 @@ class YandexNotification(APIView):
     permission_classes = [AllowAny]
 
     def post(self, request):
-        print(request)
         payment = request.data['object']
         if payment['test']:
             if payment['status'] == 'succeeded':

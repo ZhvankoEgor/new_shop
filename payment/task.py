@@ -1,5 +1,5 @@
 from io import BytesIO
-from AdminForFAQ.celery import app
+from new_shop.celery import app
 import weasyprint
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
@@ -15,8 +15,8 @@ def payment_completed(order_id):
     """
     order = Order.objects.get(id=order_id)
     # create invoice e-mail
-    subject = f'My Shop - EE Invoice no. {order.id}'
-    message = 'Please, find attached the invoice for your recent purchase.'
+    subject = f'Онлайн магазин номер заказа {order.id}'
+    message = 'Благодарим вас за покупку, оплаченый счёт находится во вложении'
     email = EmailMessage(subject, message, 'admin@myshop.com', [order.email])
     # generate PDF
     html = render_to_string('orders/order/pdf.html', {'order': order})
@@ -24,6 +24,6 @@ def payment_completed(order_id):
     stylesheets = [weasyprint.CSS(settings.STATIC_ROOT + 'css/pdf.css')]
     weasyprint.HTML(string=html).write_pdf(out, stylesheets=stylesheets)
     # attach PDF file
-    email.attach(f'order_{order.id}.pdf', out.getvalue(), 'application/pdf')
+    email.attach(f'Заказ_{order.id}.pdf', out.getvalue(), 'application/pdf')
     # send e-mail
     email.send()
