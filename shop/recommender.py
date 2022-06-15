@@ -7,15 +7,8 @@ r = redis.Redis(
     host=settings.REDIS_HOST,
     port=settings.REDIS_PORT,
     db=settings.REDIS_DB,
-    password=settings.REDIS_PASWORD,
+    # password=settings.REDIS_PASWORD,
 )
-# r = redis.Redis(
-#     host='127.0.0.1',
-#     port=6379,
-#     db=1,
-#     password="9vdihSiG8+8QAld9MhECZKsDQ+zP2tQKrvAZQ950bBFPEwuvKDjzk2VlaLI3FKPErWvw2UtIcyPjGwtD",
-# )
-
 
 
 class Recommender(object):

@@ -52,7 +52,7 @@ def order_create(request):
                                          quantity=item['quantity'])
             # очистка корзины
             cart.clear()
-            # запуск асинхронной задачи
+            # запуск асинхронной задачи на создание заказа
             order_created.delay(order.id)
             # добавляем номер заказа в сессию
             request.session['order_id'] = order.id

@@ -48,5 +48,4 @@ class ViewTestCase(TestCase):
                       }
                     }
         response2 = self.client.post(url, data2)
-        print(response2)
         self.assertEqual(response2.status_code, 200)
